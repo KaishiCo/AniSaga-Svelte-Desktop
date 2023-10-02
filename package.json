@@ -8,7 +8,7 @@
     "build": "rollup -c",
     "dev": "npm run build && electron .",
     "umi": "npm run build && npm run start",
-    "start": "sirv public --no-clear"
+    "start": "sirv public --no-clear --port 9001"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^24.0.0",
