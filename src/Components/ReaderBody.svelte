@@ -1,5 +1,6 @@
 <script>
   import { onMount } from "svelte";
+  import ePub from "epubjs";
 
   let arrayBuffer;
   
@@ -8,17 +9,15 @@
     console.log("onMount called");
     const response = await fetch("http://localhost:9000/api/epubs/1");
     arrayBuffer = await response.arrayBuffer();
-    console.log(arrayBuffer);
 
     var book = ePub(arrayBuffer);
-    const rendition = book.renderTo("viewer", { width: 600, height: 400 });
+    const rendition = book.renderTo("viewer", { width: 1920, height: 1080 });
     rendition.display();
   });
 </script>
 
 <div>
   <div id="viewer" />
-  <div><p>test</p></div>
 </div>
 
 <style>
