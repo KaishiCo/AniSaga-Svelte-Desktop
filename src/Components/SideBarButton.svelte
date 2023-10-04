@@ -1,5 +1,5 @@
 <script>
-    import { view } from '../View';
+    import { view } from '../Stores/View';
     export let value;
 
     function changeView() {

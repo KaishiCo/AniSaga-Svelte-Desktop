@@ -1,6 +1,6 @@
 <script>
   	import { onDestroy } from 'svelte';
-	import { view } from './View';
+	import { view } from './Stores/View';
 	import Home from "./Views/Home.svelte";
 	import Reader from "./Views/Reader.svelte";
 

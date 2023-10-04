@@ -1,6 +1,6 @@
 <script>
   import ePub from "epubjs";
-  import bookLocation from '../Book';
+  import bookLocation from '../Stores/Book';
   import { onDestroy } from "svelte";
   const fs = require('fs');
   const path = 'src/Assets/hsdxd1.epub';
