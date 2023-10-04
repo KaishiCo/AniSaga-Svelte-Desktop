@@ -1,24 +1,30 @@
 <script>
-  import { onMount } from "svelte";
   import ePub from "epubjs";
   const fs = require('fs');
-  
+  const path = 'src/Assets/hsdxd1.epub';
 
-  onMount(async () => {
-    console.log("onMount called");
-    const path = 'src/Assets/hsdxd1.epub';
+  const arrayBuffer = new Uint8Array(fs.readFileSync(path)).buffer;
+  const book = ePub(arrayBuffer);
+  const rendition = book.renderTo("viewer", {width: "100%", height: "100%"});
 
-    fs.readFile(path, function read(err, data) {
-      if (err) throw err;
-      const arrayBuffer = new Uint8Array(data).buffer;
-      
-      var book = ePub(arrayBuffer);
-      const rendition = book.renderTo("viewer", { width: 1920, height: 1080 });
-      rendition.display();
-    });
-  });
+  let page = 0;
+  $: {
+    rendition.display(page);
+  }
+
+  function onKeyDown(e) {
+    switch(e.keyCode) {
+      case 39:
+        if (page > 0) page--;
+        break;
+      case 37:
+        page++;
+        break;
+    }
+  }
 </script>
 
+<svelte:window on:keydown|preventDefault={onKeyDown} />
 <div>
   <div id="viewer" />
 </div>
