@@ -10,7 +10,13 @@ function main () {
         width: 800,
         height: 600,
         autoHideMenuBar: true,
+        webPreferences: {
+            nodeIntegration: true,
+            contextIsolation: false,
+            enableRemoteModule: true,
+        },
     });
 
     mainWindow.loadFile(join(__dirname, "../public/index.html"));
+    mainWindow.webContents.openDevTools();
 }
