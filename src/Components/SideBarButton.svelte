@@ -3,23 +3,9 @@
   export let value;
 
   let fileInput;
-
-  function testHandler() {
-    console.log("testHandler");
-  }
-
+  
   function changeView() {
-    switch (value) {
-      case 0:
-      case 1:
-      case 2:
-      case 3:
-        view.set(value);
-        break;
-      case 4:
-        testHandler();
-        break;
-    }
+    view.set(value);
   }
 </script>
 
