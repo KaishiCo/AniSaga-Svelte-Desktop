@@ -1,18 +1,23 @@
 <script>
   import { onMount } from "svelte";
   import ePub from "epubjs";
-
-  let arrayBuffer;
+  const fs = require('fs');
   
 
   onMount(async () => {
     console.log("onMount called");
-    const response = await fetch("http://localhost:9000/api/epubs/1");
-    arrayBuffer = await response.arrayBuffer();
+    const path = 'src/Assets/hsdxd1.epub';
+    //const response = await fetch("http://localhost:9000/api/epubs/1");
+    //arrayBuffer = await response.arrayBuffer();
 
-    var book = ePub(arrayBuffer);
-    const rendition = book.renderTo("viewer", { width: 1920, height: 1080 });
-    rendition.display();
+    fs.readFile(path, function read(err, data) {
+      if (err) throw err;
+      const arrayBuffer = new Uint8Array(data).buffer;
+      
+      var book = ePub(arrayBuffer);
+      const rendition = book.renderTo("viewer", { width: 1920, height: 1080 });
+      rendition.display();
+    });
   });
 </script>
 
