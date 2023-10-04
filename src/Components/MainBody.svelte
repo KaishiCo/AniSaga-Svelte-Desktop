@@ -1,7 +1,7 @@
 <script>
 </script>
 
-<div><p>yoooo</p>yooooooooooooooooooooo</div>
+<div><p>Home page</div>
 
 <style>
 div {
