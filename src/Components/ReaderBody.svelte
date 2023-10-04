@@ -7,8 +7,6 @@
   onMount(async () => {
     console.log("onMount called");
     const path = 'src/Assets/hsdxd1.epub';
-    //const response = await fetch("http://localhost:9000/api/epubs/1");
-    //arrayBuffer = await response.arrayBuffer();
 
     fs.readFile(path, function read(err, data) {
       if (err) throw err;
