@@ -1,13 +1,16 @@
 <script>
+  	import { onDestroy } from 'svelte';
 	import { view } from './View';
 	import Home from "./Views/Home.svelte";
 	import Reader from "./Views/Reader.svelte";
 
 	let state;
 
-	view.subscribe((value) => {
+	const unsubscribe = view.subscribe((value) => {
 		state = value;
 	});
+
+	onDestroy(unsubscribe);
 </script>
 
 	{#if state === 0}
