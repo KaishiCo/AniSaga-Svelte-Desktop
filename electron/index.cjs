@@ -14,8 +14,10 @@ function main () {
             nodeIntegration: true,
             contextIsolation: false,
             enableRemoteModule: true,
+            preload: join(__dirname, '../preload.cjs')
         },
     });
 
     mainWindow.loadFile(join(__dirname, "../public/index.html"));
+    mainWindow.webContents.openDevTools();
 }
