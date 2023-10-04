@@ -6,19 +6,16 @@
   const arrayBuffer = new Uint8Array(fs.readFileSync(path)).buffer;
   const book = ePub(arrayBuffer);
   const rendition = book.renderTo("viewer", {width: "100%", height: "100%"});
-
-  let page = 0;
-  $: {
-    rendition.display(page);
-  }
+  
+  rendition.display();
 
   function onKeyDown(e) {
     switch(e.keyCode) {
       case 39:
-        if (page > 0) page--;
+        rendition.prev();
         break;
       case 37:
-        page++;
+        rendition.next();
         break;
     }
   }
