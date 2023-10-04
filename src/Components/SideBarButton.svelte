@@ -25,7 +25,7 @@
 
 {#if value == 4}
   <input type="file" bind:this={fileInput} />
-  <button on:click={fileInput.click()}>Open File...</button>
+  <button on:click={fileInput.click()}></button>
 {:else}
   <button on:click={changeView} />
 {/if}
