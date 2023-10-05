@@ -3,6 +3,17 @@
     export let bookName;
 </script>
 
+<div>
 <img src={imgurl} alt={bookName}>
+</div>
 
-<style></style>
+<style>
+    div {
+        position: relative;
+        display: flex;
+        margin: 0.3rem;
+        min-width: 255px;
+        min-height: 350px;
+        background-color: black;
+    }
+</style>
