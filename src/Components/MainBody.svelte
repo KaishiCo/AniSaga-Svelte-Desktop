@@ -1,28 +1,29 @@
 <script>
   import BookCardCover from "./BookCardCover.svelte";
+  const path = '../src/Assets/cover.jpeg';
 </script>
 
   <div>
-    <BookCardCover />
-    <BookCardCover />
-    <BookCardCover />
-    <BookCardCover />
-    <BookCardCover />
-    <BookCardCover />
-    <BookCardCover />
-    <BookCardCover />
-    <BookCardCover />
-    <BookCardCover />
-    <BookCardCover />
-    <BookCardCover />
-    <BookCardCover />
-    <BookCardCover />
-    <BookCardCover />
-    <BookCardCover />
-    <BookCardCover />
-    <BookCardCover />
-    <BookCardCover />
-    <BookCardCover />
+    <BookCardCover imgurl={path} bookName={"hsdxd1 cover"}/>
+    <BookCardCover imgurl={path} bookName={"hsdxd1 cover"}/>
+    <BookCardCover imgurl={path} bookName={"hsdxd1 cover"}/>
+    <BookCardCover imgurl={path} bookName={"hsdxd1 cover"}/>
+    <BookCardCover imgurl={path} bookName={"hsdxd1 cover"}/>
+    <BookCardCover imgurl={path} bookName={"hsdxd1 cover"}/>
+    <BookCardCover imgurl={path} bookName={"hsdxd1 cover"}/>
+    <BookCardCover imgurl={path} bookName={"hsdxd1 cover"}/>
+    <BookCardCover imgurl={path} bookName={"hsdxd1 cover"}/>
+    <BookCardCover imgurl={path} bookName={"hsdxd1 cover"}/>
+    <BookCardCover imgurl={path} bookName={"hsdxd1 cover"}/>
+    <BookCardCover imgurl={path} bookName={"hsdxd1 cover"}/>
+    <BookCardCover imgurl={path} bookName={"hsdxd1 cover"}/>
+    <BookCardCover imgurl={path} bookName={"hsdxd1 cover"}/>
+    <BookCardCover imgurl={path} bookName={"hsdxd1 cover"}/>
+    <BookCardCover imgurl={path} bookName={"hsdxd1 cover"}/>
+    <BookCardCover imgurl={path} bookName={"hsdxd1 cover"}/>
+    <BookCardCover imgurl={path} bookName={"hsdxd1 cover"}/>
+    <BookCardCover imgurl={path} bookName={"hsdxd1 cover"}/>
+    <BookCardCover imgurl={path} bookName={"hsdxd1 cover"}/>
   </div>
 
 <style>

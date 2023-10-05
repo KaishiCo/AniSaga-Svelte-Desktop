@@ -4,7 +4,7 @@
 </script>
 
 <div>
-<img src={imgurl} alt={bookName}>
+<img src={imgurl} alt={bookName} width="255" height="350">
 </div>
 
 <style>
