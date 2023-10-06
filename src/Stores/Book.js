@@ -1,9 +1,10 @@
 import { writable } from "svelte/store";
 import { Rendition } from "epubjs";
 
-const bookLocation = writable([{
-    started: false,
-    bookSpot: Rendition,
+const currentBookData = writable([{
+    bookID: String,
+    bookFP: String,
+    location: Rendition
 }]);
 
-export default bookLocation;
+export default currentBookData;
