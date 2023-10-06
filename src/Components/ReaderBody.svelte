@@ -1,30 +1,29 @@
 <script>
   import ePub from "epubjs";
-  import bookLocation from '../Stores/Book';
+  import currentBookData from '../Stores/Book';
   import { onDestroy } from "svelte";
   const fs = require('fs');
-  const path = 'src/Assets/hsdxd1.epub';
 
-  let previous;
-  const unsubscribe = bookLocation.subscribe((data) => {
-    previous = data;
+  let currBook;
+  const unsubscribe = currentBookData.subscribe((data) => {
+    currBook = data;
   });
 
   let rendition;
 
-  if (previous.started) {
-    const arrayBuffer = new Uint8Array(fs.readFileSync(path)).buffer;
-    const book = ePub(arrayBuffer);
-    rendition = book.renderTo("viewer", {width: "100%", height: "100%"});
-
-    rendition.display(previous.bookSpot.start.cfi);
-  }
-  else {
-    const arrayBuffer = new Uint8Array(fs.readFileSync(path)).buffer;
+  if (currBook.location === null) {
+    const arrayBuffer = new Uint8Array(fs.readFileSync(currBook.bookFP)).buffer;
     const book = ePub(arrayBuffer);
     rendition = book.renderTo("viewer", {width: "100%", height: "100%"});
 
     rendition.display();
+  }
+  else {
+    const arrayBuffer = new Uint8Array(fs.readFileSync(currBook.bookFP)).buffer;
+    const book = ePub(arrayBuffer);
+    rendition = book.renderTo("viewer", {width: "100%", height: "100%"});
+
+    rendition.display(currBook.location.start.cfi);
   }
 
   function onKeyDown(e) {
@@ -39,7 +38,8 @@
   }
 
   onDestroy( () => {
-    bookLocation.set({started: true, bookSpot: rendition.currentLocation()});
+    //todo update currentLocation on the db
+    currentBookData.set({bookID: currBook.bookID, bookFP: currBook.bookFP, location: rendition.currentLocation()});
     unsubscribe;
   });
 </script>
