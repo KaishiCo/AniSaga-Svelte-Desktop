@@ -11,11 +11,11 @@ db.serialize(() => {
       title TEXT,
       coverPath TEXT,
       filePath TEXT,
-      pageLocation TEXT)
+      pageLocation BLOB DEFAULT NULL)
   `);
   // db.run(`
-  //   INSERT INTO epub (id, title, coverPath, filePath, pageLocation)
-  //   VALUES ("1", "HsDxd", "../src/Assets/cover.jpeg", "", "0")
+  //    INSERT INTO epub (id, title, coverPath, filePath)
+  //    VALUES ("1", "HsDxd", "../src/Assets/cover.jpeg", "src/Assets/hsdxd1.epub")
   // `);
   // db.run(`
   //   DELETE FROM epub
