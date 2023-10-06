@@ -1,22 +1,27 @@
 <script>
   import BookCardCover from "./BookCardCover.svelte";
   import * as db from "../DB/DatabaseHandler";
-  const path = '../src/Assets/cover.jpeg';
+  import { onMount } from "svelte";
 
-  let epubs;
+  let epubs = [];
 
-  async function getMainContents() {
-    epubs = await db.getEpubs();
-    console.log(epubs);
+  onMount(async () => {
+    epubs = await getAllEpubs();
+  });
+
+  async function getAllEpubs() {
+    return await db.getEpubs().then((res) => {
+      return res;
+    })
   };
 </script>
 
   <div>
-    {#await getMainContents}
-    {#each epubs as epub (epub.id)}
-      <BookCardCover imgurl={epub.coverPath} bookName={"hsdxd1 cover"} pageLocation={epub.pageLocation} />
-    {/each}
-    {/await}
+    {#if epubs.length > 0}
+      {#each epubs as epub (epub.id)}
+      <BookCardCover imgurl={epub.coverPath} bookName={epub.title} bookId={epub.id} />
+      {/each}
+    {/if}
   </div>
 
 <style>
