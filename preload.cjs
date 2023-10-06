@@ -13,5 +13,12 @@ db.serialize(() => {
       filePath TEXT,
       pageLocation TEXT)
   `);
+  // db.run(`
+  //   INSERT INTO epub (id, title, coverPath, filePath, pageLocation)
+  //   VALUES ("1", "HsDxd", "../src/Assets/cover.jpeg", "", "0")
+  // `);
+  // db.run(`
+  //   DELETE FROM epub
+  // `);
   db.close();
 });

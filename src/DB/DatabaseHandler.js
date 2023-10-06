@@ -12,3 +12,12 @@ const db = new sqlite3.Database("./epub.db");
 
 
 //read
+async function getEpubs() {
+    db.run("SELECT * FROM epub", (err, rows) => {
+        if (err) throw err;
+
+        return rows;
+    });
+}
+
+export { getEpubs };

@@ -1,6 +1,7 @@
 <script>
     export let imgurl;
     export let bookName;
+    export let pageLocation;
 </script>
 
 <div>

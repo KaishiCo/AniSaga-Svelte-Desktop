@@ -1,29 +1,22 @@
 <script>
   import BookCardCover from "./BookCardCover.svelte";
+  import * as db from "../DB/DatabaseHandler";
   const path = '../src/Assets/cover.jpeg';
+
+  let epubs;
+
+  async function getMainContents() {
+    epubs = await db.getEpubs();
+    console.log(epubs);
+  };
 </script>
 
   <div>
-    <BookCardCover imgurl={path} bookName={"hsdxd1 cover"}/>
-    <BookCardCover imgurl={path} bookName={"hsdxd1 cover"}/>
-    <BookCardCover imgurl={path} bookName={"hsdxd1 cover"}/>
-    <BookCardCover imgurl={path} bookName={"hsdxd1 cover"}/>
-    <BookCardCover imgurl={path} bookName={"hsdxd1 cover"}/>
-    <BookCardCover imgurl={path} bookName={"hsdxd1 cover"}/>
-    <BookCardCover imgurl={path} bookName={"hsdxd1 cover"}/>
-    <BookCardCover imgurl={path} bookName={"hsdxd1 cover"}/>
-    <BookCardCover imgurl={path} bookName={"hsdxd1 cover"}/>
-    <BookCardCover imgurl={path} bookName={"hsdxd1 cover"}/>
-    <BookCardCover imgurl={path} bookName={"hsdxd1 cover"}/>
-    <BookCardCover imgurl={path} bookName={"hsdxd1 cover"}/>
-    <BookCardCover imgurl={path} bookName={"hsdxd1 cover"}/>
-    <BookCardCover imgurl={path} bookName={"hsdxd1 cover"}/>
-    <BookCardCover imgurl={path} bookName={"hsdxd1 cover"}/>
-    <BookCardCover imgurl={path} bookName={"hsdxd1 cover"}/>
-    <BookCardCover imgurl={path} bookName={"hsdxd1 cover"}/>
-    <BookCardCover imgurl={path} bookName={"hsdxd1 cover"}/>
-    <BookCardCover imgurl={path} bookName={"hsdxd1 cover"}/>
-    <BookCardCover imgurl={path} bookName={"hsdxd1 cover"}/>
+    {#await getMainContents}
+    {#each epubs as epub (epub.id)}
+      <BookCardCover imgurl={epub.coverPath} bookName={"hsdxd1 cover"} pageLocation={epub.pageLocation} />
+    {/each}
+    {/await}
   </div>
 
 <style>
