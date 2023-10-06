@@ -23,7 +23,12 @@ function insertEpub(id, title, coverPath, filePath) {
 
 
 //update
-
+function updateLocation(id, location) {
+    db.run(`UPDATE epub SET pageLocation = $bookLocation WHERE id = $bookID`, {
+        $bookLocation: location,
+        $bookID: id
+    });
+}
 
 //read
 function getEpubs() {
@@ -50,4 +55,4 @@ function getEpubInfo(id) {
     });
 }
 
-export { getEpubs, getEpubInfo };
+export { getEpubs, getEpubInfo, updateLocation };

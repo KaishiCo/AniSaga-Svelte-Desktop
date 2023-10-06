@@ -2,6 +2,7 @@
   import ePub from "epubjs";
   import currentBookData from '../Stores/Book';
   import { onDestroy } from "svelte";
+  import * as db from "../DB/DatabaseHandler";
   const fs = require('fs');
 
   let currBook;
@@ -23,7 +24,9 @@
     const book = ePub(arrayBuffer);
     rendition = book.renderTo("viewer", {width: "100%", height: "100%"});
 
-    rendition.display(currBook.location.start.cfi);
+      let prevBookLocation = JSON.parse(currBook.location);
+
+      rendition.display(prevBookLocation.start.cfi);
   }
 
   function onKeyDown(e) {
@@ -38,8 +41,9 @@
   }
 
   onDestroy( () => {
-    //todo update currentLocation on the db
-    currentBookData.set({bookID: currBook.bookID, bookFP: currBook.bookFP, location: rendition.currentLocation()});
+    let currLocation = JSON.stringify(rendition.currentLocation());
+    currentBookData.set({bookID: currBook.bookID, bookFP: currBook.bookFP, location: currLocation});
+    db.updateLocation(currBook.bookID, currLocation);
     unsubscribe;
   });
 </script>
