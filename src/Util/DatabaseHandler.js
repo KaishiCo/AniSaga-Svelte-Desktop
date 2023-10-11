@@ -6,7 +6,7 @@ const db = new sqlite3.Database("./epub.db");
 //insert
 function insertEpub(id, title, folderPath) {
     return new Promise((resolve, reject) => {
-        db.run(`INSERT INTO epub (id, title, folderPath, pageLocation)
+        db.run(`INSERT INTO epub (id, title, folderPath)
         VALUES ("`+id+`", "`+title+`", "`+folderPath+`")
         `, (err) => {
             if (err) {
@@ -55,4 +55,4 @@ function getEpubInfo(id) {
     });
 }
 
-export { getEpubs, getEpubInfo, updateLocation };
+export { getEpubs, getEpubInfo, updateLocation, insertEpub };

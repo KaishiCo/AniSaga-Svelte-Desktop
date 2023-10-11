@@ -12,10 +12,10 @@ db.serialize(() => {
       folderPath TEXT,
       pageLocation TEXT DEFAULT NULL)
   `);
-    // db.run(`
-    //   INSERT INTO epub (id, title, folderPath)
-    //   VALUES ("1", "hsdxd1", "src/Assets/")
-    // `);
+   db.run(`
+     INSERT INTO epub (id, title, folderPath)
+     VALUES ("1", "hsdxd1", "src/Assets/")
+   `);
   // db.run(`
   //   DELETE FROM epub
   // `);

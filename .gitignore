@@ -1,7 +1,6 @@
 /node_modules/
 /public/build/
+/src/Assets/*
 
-*.epub
 *.db
 .DS_Store
-*.jpeg

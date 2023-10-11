@@ -1,5 +1,6 @@
 <script>
   import { view } from "../Stores/View";
+  import * as fh from "../Util/FileHandler";
   export let value;
 
   let fileInput;
@@ -8,7 +9,8 @@
     const selectedFiles = event.target.files;
     if (selectedFiles.length > 0) {
       let selectedFile = selectedFiles[0];
-      console.log(selectedFile.path);
+      fh.parseFile(selectedFile.path);
+      view.set(10);
     }
   }
   
