@@ -19,5 +19,4 @@ function main () {
     });
 
     mainWindow.loadFile(join(__dirname, "../public/index.html"));
-    mainWindow.webContents.openDevTools();
 }

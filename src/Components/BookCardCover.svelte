@@ -16,6 +16,7 @@
 </script>
 
 <div>
+<!-- svelte-ignore a11y-click-events-have-key-events -->
 <img src={imgurl} alt={bookName} width="255" height="350" on:click={setBookInfo}>
 </div>
 
