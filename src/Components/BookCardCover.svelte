@@ -2,7 +2,7 @@
     export let imgurl;
     export let bookName;
     export let bookId;
-    import * as db from "../DB/DatabaseHandler";
+    import * as db from "../Util/DatabaseHandler";
     import currentBookData from "../Stores/Book";
     import { view } from "../Stores/View";
 

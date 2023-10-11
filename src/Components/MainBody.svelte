@@ -1,6 +1,6 @@
 <script>
   import BookCardCover from "./BookCardCover.svelte";
-  import * as db from "../DB/DatabaseHandler";
+  import * as db from "../Util/DatabaseHandler";
   import { onMount } from "svelte";
 
   let epubs = [];

@@ -2,7 +2,7 @@
   import ePub from "epubjs";
   import currentBookData from '../Stores/Book';
   import { onDestroy } from "svelte";
-  import * as db from "../DB/DatabaseHandler";
+  import * as db from "../Util/DatabaseHandler";
   const fs = require('fs');
 
   let currBook;

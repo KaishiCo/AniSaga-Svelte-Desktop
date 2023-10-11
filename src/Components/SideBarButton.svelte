@@ -18,7 +18,7 @@
 </script>
 
 {#if value == 4}
-  <input type="file" bind:this={fileInput} on:change={handleFileSelect} />
+  <input type="file" accept=".epub" bind:this={fileInput} on:change={handleFileSelect} />
   <button on:click={fileInput.click()}></button>
 {:else}
   <button on:click={changeView} />
