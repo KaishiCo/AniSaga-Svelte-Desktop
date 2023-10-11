@@ -19,7 +19,7 @@
   <div>
     {#if epubs.length > 0}
       {#each epubs as epub (epub.id)}
-      <BookCardCover imgurl={epub.coverPath} bookName={epub.title} bookId={epub.id} />
+      <BookCardCover imgurl={"../" + epub.folderPath + "cover.jpeg"} bookName={epub.title} bookId={epub.id} />
       {/each}
     {/if}
   </div>

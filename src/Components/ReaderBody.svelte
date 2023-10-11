@@ -13,14 +13,14 @@
   let rendition;
 
   if (currBook.location === null) {
-    const arrayBuffer = new Uint8Array(fs.readFileSync(currBook.bookFP)).buffer;
+    const arrayBuffer = new Uint8Array(fs.readFileSync(currBook.bookFP + currBook.bookTitle + ".epub")).buffer;
     const book = ePub(arrayBuffer);
     rendition = book.renderTo("viewer", {width: "100%", height: "100%"});
 
     rendition.display();
   }
   else {
-    const arrayBuffer = new Uint8Array(fs.readFileSync(currBook.bookFP)).buffer;
+    const arrayBuffer = new Uint8Array(fs.readFileSync(currBook.bookFP + currBook.bookTitle + ".epub")).buffer;
     const book = ePub(arrayBuffer);
     rendition = book.renderTo("viewer", {width: "100%", height: "100%"});
 
@@ -42,7 +42,7 @@
 
   onDestroy( () => {
     let currLocation = JSON.stringify(rendition.currentLocation());
-    currentBookData.set({bookID: currBook.bookID, bookFP: currBook.bookFP, location: currLocation});
+    currentBookData.set({bookID: currBook.bookID, bookTitle: currBook.bookTitle, bookFP: currBook.bookFP, location: currLocation});
     db.updateLocation(currBook.bookID, currLocation);
     unsubscribe;
   });

@@ -9,14 +9,13 @@ db.serialize(() => {
     CREATE TABLE IF NOT EXISTS epub (
       id TEXT PRIMARY KEY,
       title TEXT,
-      coverPath TEXT,
-      filePath TEXT,
+      folderPath TEXT,
       pageLocation TEXT DEFAULT NULL)
   `);
-  // db.run(`
-  //   INSERT INTO epub (id, title, coverPath, filePath)
-  //   VALUES ("1", "HsDxd", "../src/Assets/cover.jpeg", "src/Assets/hsdxd1.epub")
-  // `);
+    // db.run(`
+    //   INSERT INTO epub (id, title, folderPath)
+    //   VALUES ("1", "hsdxd1", "src/Assets/")
+    // `);
   // db.run(`
   //   DELETE FROM epub
   // `);

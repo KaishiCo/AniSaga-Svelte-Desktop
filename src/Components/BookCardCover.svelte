@@ -10,7 +10,7 @@
         let bookInfo = await db.getEpubInfo(bookId).then((res) => {
             return res;
         });
-        currentBookData.set({bookID: bookId, bookFP: bookInfo.filePath, location: bookInfo.pageLocation});
+        currentBookData.set({bookID: bookId, bookTitle: bookName, bookFP: bookInfo.folderPath, location: bookInfo.pageLocation});
         view.set(1);
     }
 </script>

@@ -4,10 +4,10 @@ const db = new sqlite3.Database("./epub.db");
 
 
 //insert
-function insertEpub(id, title, coverPath, filePath) {
+function insertEpub(id, title, folderPath) {
     return new Promise((resolve, reject) => {
-        db.run(`INSERT INTO epub (id, title, coverPath, filePath, pageLocation)
-        VALUES ("`+id+`", "`+title+`", "`+coverPath+`", "`+filePath+`")
+        db.run(`INSERT INTO epub (id, title, folderPath, pageLocation)
+        VALUES ("`+id+`", "`+title+`", "`+folderPath+`")
         `, (err) => {
             if (err) {
                 reject(false);
@@ -45,7 +45,7 @@ function getEpubs() {
 
 function getEpubInfo(id) {
     return new Promise((resolve, reject) => {
-        db.get(`SELECT filePath, pageLocation FROM epub WHERE id="`+id+`"`, (err, row) => {
+        db.get(`SELECT folderPath, pageLocation FROM epub WHERE id="`+id+`"`, (err, row) => {
             if (err) {
                 reject(err);
             } else {

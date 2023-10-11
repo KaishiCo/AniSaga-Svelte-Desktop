@@ -3,6 +3,14 @@
   export let value;
 
   let fileInput;
+
+  function handleFileSelect(event) {
+    const selectedFiles = event.target.files;
+    if (selectedFiles.length > 0) {
+      let selectedFile = selectedFiles[0];
+      console.log(selectedFile.path);
+    }
+  }
   
   function changeView() {
     view.set(value);
@@ -10,7 +18,7 @@
 </script>
 
 {#if value == 4}
-  <input type="file" bind:this={fileInput} />
+  <input type="file" bind:this={fileInput} on:change={handleFileSelect} />
   <button on:click={fileInput.click()}></button>
 {:else}
   <button on:click={changeView} />
