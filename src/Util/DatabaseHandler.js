@@ -7,7 +7,7 @@ const db = new sqlite3.Database("./epub.db");
 function insertEpub(id, title, folderPath) {
     return new Promise((resolve, reject) => {
         db.run(`INSERT INTO epub (id, title, folderPath)
-        VALUES ("`+id+`", "`+title+`", "`+folderPath+`")
+        VALUES ("`+ id + `", "` + title + `", "` + folderPath + `")
         `, (err) => {
             if (err) {
                 reject(false);
@@ -30,6 +30,22 @@ function updateLocation(id, location) {
     });
 }
 
+//exists
+function epubExists(title) {
+    return new Promise((resolve, reject) => {
+        db.get(`SELECT * FROM epub WHERE id = $title`, {
+            $title: title,
+        }, (err, row) => {
+            if (err) {
+                reject(err);
+            }
+            if (row) {
+                resolve(row);
+            }
+        });
+    });
+}
+
 //read
 function getEpubs() {
     return new Promise((resolve, reject) => {
@@ -45,7 +61,7 @@ function getEpubs() {
 
 function getEpubInfo(id) {
     return new Promise((resolve, reject) => {
-        db.get(`SELECT folderPath, pageLocation FROM epub WHERE id="`+id+`"`, (err, row) => {
+        db.get(`SELECT folderPath, pageLocation FROM epub WHERE id="` + id + `"`, (err, row) => {
             if (err) {
                 reject(err);
             } else {
@@ -55,4 +71,4 @@ function getEpubInfo(id) {
     });
 }
 
-export { getEpubs, getEpubInfo, updateLocation, insertEpub };
+export { getEpubs, getEpubInfo, updateLocation, insertEpub, epubExists };

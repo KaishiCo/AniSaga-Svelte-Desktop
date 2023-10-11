@@ -4,15 +4,28 @@ const fs = require("fs");
 
 function parseFile(filepath) {
     let id = uuidv4().toString();
-    let booktitle = filepath.substring(filepath.lastIndexOf("\\")+1, filepath.lastIndexOf("."));
+    let booktitle = filepath.substring(filepath.lastIndexOf("\\") + 1, filepath.lastIndexOf("."));
     let path = "src/Assets/" + booktitle + "/";
 
-    console.log(id + " " + booktitle + " " + path);
+    db.epubExists(booktitle).then((res) => {
+        console.log(res);
+    });
 
-    fs.mkdirSync(path);
+    if (!fs.existsSync(path)) {
+        fs.mkdirSync(path);
+    }
 
-    fs.copyFileSync(filepath, path + "" + booktitle + ".epub");
-    fs.copyFileSync(filepath, path + "" + booktitle + ".zip");
+    let destFile = path + "" + booktitle + ".epub";
+    fs.copyFileSync(filepath, destFile);
+
+    // fs.readSync(destFile, (err, data) => {
+    //     if (err) {
+    //         console.log(err);
+    //     }
+    //     else {
+    //         console.log(data);
+    //     }
+    // });
 
     db.insertEpub(id, booktitle, path);
 }
