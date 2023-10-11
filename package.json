@@ -23,6 +23,7 @@
   "dependencies": {
     "electron": "^26.2.3",
     "epubjs": "^0.3.93",
+    "node-stream-zip": "^1.15.0",
     "sirv-cli": "^2.0.0",
     "sqlite3": "^5.1.6",
     "uuid": "^9.0.1"

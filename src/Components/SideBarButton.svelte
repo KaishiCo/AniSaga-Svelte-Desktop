@@ -9,8 +9,10 @@
     const selectedFiles = event.target.files;
     if (selectedFiles.length > 0) {
       let selectedFile = selectedFiles[0];
-      fh.parseFile(selectedFile.path);
-      view.set(10);
+      fh.parseFile(selectedFile.path).then((parsed) => {
+        if (!parsed) return;
+        view.set(10);
+      });
     }
   }
   
